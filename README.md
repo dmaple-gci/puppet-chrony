@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # chrony
 
 #### Table of Contents
