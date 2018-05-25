@@ -1,0 +1,33 @@
+# chrony.conf: Managed by puppet.
+#
+
+# Servers
+<% [@servers].flatten.each do |server| -%>
+server <%= server %><% if @iburst_enable == true -%> iburst<% end %><% if @preferred_servers.include?(server) -%> prefer<% end %>
+<% end -%>
+
+# Record the rate at which the system clock gains/losses time.
+driftfile <%= @driftfile %>
+
+# Allow the system clock to be stepped in the first three updates
+# if its offset is larger than 1 second.
+makestep <%= @makestep_threshold %> <%= @makestep_limit %>
+
+# Enable kernel synchronization of the real-time clock (RTC).
+<% if @rtcsync -%>
+rtcsync
+<% end -%>
+
+# Specify file containing keys for NTP authentication.
+<% if @keys_enable -%>
+keysfile <%= @keys_file %>
+% end -%>
+
+# Specify directory for log files.
+<% unless @logdir.nil? -%>
+logdir = <%= @logdir %>
+<% end -%>
+
+# Select which information is logged.
+#log measurements statistics tracking
+<% end -%>
