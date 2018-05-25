@@ -1,6 +1,6 @@
 {
   "name": "dmaple-chrony",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "dmaple",
   "summary": "Install, configure and maintain the chrony daemon.",
   "license": "Apache 2.0",
