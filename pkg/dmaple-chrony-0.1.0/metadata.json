@@ -1,0 +1,13 @@
+{
+  "name": "dmaple-chrony",
+  "version": "0.1.0",
+  "author": "dmaple",
+  "summary": "Install, configure and maintain the chrony daemon.",
+  "license": "Apache 2.0",
+  "source": "https://github.com/dmaple-gci/puppet-chrony.git",
+  "project_page": "https://github.com/dmaple-gci/puppet-chrony",
+  "issues_url": "https://github.com/dmaple-gci/puppet-chrony/issues",
+  "dependencies": [
+    {"name":"puppetlabs-stdlib","version_requirement":">= 1.0.0"}
+  ]
+}

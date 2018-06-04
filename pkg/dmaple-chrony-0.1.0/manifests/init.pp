@@ -36,26 +36,46 @@
 # Copyright 2018 Your name here, unless otherwise noted.
 #
 class chrony (
-  String  $config             = '/etc/chrony.conf',
-  String  $config_template    = 'chrony.conf.erb',
-  String  $driftfile          = '/var/lib/chrony/drift',
-  String  $logdir             = '/var/log/chrony',
-  Boolean $iburst_enable      = true,
-  Boolean $keys_enable        = false,
-  String  $keys_file          = '/etc/chrony.keys',
-  Numeric $makestep_threshold = 1.0,
-  Integer $makestep_limit     = 3,
-  String  $package_ensure     = 'present',
-  Array   $package_name       = ['chrony'],
-  Array   $preferred_servers  = [],
-  Boolean $rtcsync            = true,
-  Array   $servers            = ['0.centos.pool.ntp.org','1.centos.pool.ntp.org','2.centos.pool.ntp.org'],
-  Boolean $service_enable     = true,
-  String  $service_ensure     = 'running',
-  Boolean $service_manage     = true,
-  String  $service_name       = 'chronyd',
+  $config             = '/etc/chrony.conf',
+  $config_template    = 'chrony.conf.erb',
+  $driftfile          = '/var/lib/chrony/drift',
+  $logdir             = '/var/log/chrony',
+  $iburst_enable      = true,
+  $keys_enable        = false,
+  $keys_file          = '/etc/chrony.keys',
+  $makestep_threshold = 1.0,
+  $makestep_limit     = 3,
+  $package_ensure     = 'present',
+  $package_name       = ['chrony'],
+  $preferred_servers  = [],
+  $rtcsync            = true,
+  $servers            = ['0.centos.pool.ntp.org','1.centos.pool.ntp.org','2.centos.pool.ntp.org'],
+  $service_enable     = true,
+  $service_ensure     = 'running',
+  $service_manage     = true,
+  $service_name       = 'chronyd',
 ) {
 
+  # Validate parameters
+  #
+  validate_absolute_path($config)
+  validate_string($config_template)
+  validate_absolute_path($driftfile)
+  if $logdir { validate_absolute_path($logdir) }
+  validate_bool($iburst_enable)
+  validate_bool($keys_enable)
+  validate_absolute_path($keys_file)
+  validate_numeric($makestep_threshold)
+  validate_integer($makestep_limit)
+  validate_string($package_ensure)
+  validate_array($package_name)
+  validate_array($preferred_servers)
+  validate_bool($rtcsync)
+  validate_array($servers)
+  validate_bool($service_enable)
+  validate_string($service_ensure)
+  validate_bool($service_manage)
+  validate_string($service_name)
 
   # On virtual machines allow large clock skews.
   $panic = str2bool($::is_virtual) ? {
@@ -96,7 +116,7 @@ class chrony (
   }
   
   if $service_manage == true {
-    service { 'chronyd':
+    service { 'ntp':
       ensure     =>  $service_ensure,
       enable     =>  $service_enable,
       name       =>  $service_name,

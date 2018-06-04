@@ -1,0 +1,12 @@
+{
+  "Gemfile": "dbc1a15e3a264c03878028240cfc5d89",
+  "LICENSE": "86d3f3a95c324c9479bd8986968f4327",
+  "README.md": "653ba2a8a9eac251cde290a71510b8ef",
+  "Rakefile": "20b80e526e351a74df2001f504e756d2",
+  "manifests/init.pp": "437e1ec62720625a42ed07f3981c5a70",
+  "metadata.json": "67fa71cc51ad7521de1a6ff4b7ef2657",
+  "spec/classes/init_spec.rb": "54beaef46a3824bcfdeb19bf55ad2f95",
+  "spec/spec_helper.rb": "0db89c9a486df193c0e40095422e19dc",
+  "templates/chrony.conf.erb": "6face9064ed8b3022baf45861f6719ce",
+  "tests/init.pp": "ae6cff3033d78112380d81dc97d05a93"
+}
